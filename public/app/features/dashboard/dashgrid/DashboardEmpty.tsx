@@ -1,9 +1,9 @@
-import { css, cx } from '@emotion/css';
+import { css } from '@emotion/css';
 import React from 'react';
 
 import { GrafanaTheme2 } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
-import { config, locationService, reportInteraction } from '@grafana/runtime';
+import { locationService, reportInteraction } from '@grafana/runtime';
 import { Button, useStyles2, Text } from '@grafana/ui';
 import { Trans } from 'app/core/internationalization';
 import { DashboardModel } from 'app/features/dashboard/state';
@@ -24,78 +24,75 @@ const DashboardEmpty = ({ dashboard, canCreate }: Props) => {
 
   return (
     <div className={styles.centeredContent}>
-      <div className={cx(styles.centeredContent, styles.wrapper)}>
-        <div className={cx(styles.containerBox, styles.centeredContent, styles.visualizationContainer)}>
-          <div className={styles.headerBig}>
-            <Text element="h1" textAlignment="center" weight="medium">
-              <Trans i18nKey="dashboard.empty.add-visualization-header">
-                Start your new dashboard by adding a visualization
-              </Trans>
+      <div className={styles.main}>
+        <p className={styles.spacer}>Welcome to your new dashboard. Looks empty; let`&apos;`s fix that.</p>
+
+        <div className={styles.spacer}>
+          <div className={styles.heading}>
+            <Text element="h2" weight="light">
+              Start with packages
             </Text>
           </div>
-          <div className={styles.bodyBig}>
-            <Text element="p" textAlignment="center" color="secondary">
-              <Trans i18nKey="dashboard.empty.add-visualization-body">
-                Select a data source and then query and visualize your data with charts, stats and tables or create
-                lists, markdowns and other widgets.
-              </Trans>
-            </Text>
-          </div>
+          <Text element="p" color="secondary">
+            You can build almost anything in Grafana. But you don`&apos;`t have to.
+            <br />
+            Packages contain configured and tested visualizations for most monitoring use cases.
+          </Text>
           <Button
-            size="lg"
+            size="md"
             icon="plus"
-            data-testid={selectors.pages.AddDashboard.itemButton('Create new panel button')}
             onClick={() => {
-              const id = onCreateNewPanel(dashboard, initialDatasource);
-              reportInteraction('dashboards_emptydashboard_clicked', { item: 'add_visualization' });
-              locationService.partial({ editPanel: id, firstPanel: true });
-              dispatch(setInitialDatasource(undefined));
+              console.log('ADDING FROM PACKAGE');
             }}
             disabled={!canCreate}
+            className={styles.buttonWrapper}
           >
-            <Trans i18nKey="dashboard.empty.add-visualization-button">Add visualization</Trans>
+            Add from package
           </Button>
         </div>
-        <div className={cx(styles.centeredContent, styles.others)}>
-          {config.featureToggles.vizAndWidgetSplit && (
-            <div className={cx(styles.containerBox, styles.centeredContent, styles.widgetContainer)}>
-              <div className={styles.headerSmall}>
-                <Text element="h3" textAlignment="center" weight="medium">
-                  <Trans i18nKey="dashboard.empty.add-widget-header">Add a widget</Trans>
-                </Text>
-              </div>
-              <div className={styles.bodySmall}>
-                <Text element="p" textAlignment="center" color="secondary">
-                  <Trans i18nKey="dashboard.empty.add-widget-body">Create lists, markdowns and other widgets</Trans>
-                </Text>
-              </div>
-              <Button
-                icon="plus"
-                fill="outline"
-                data-testid={selectors.pages.AddDashboard.itemButton('Create new widget button')}
-                onClick={() => {
-                  reportInteraction('dashboards_emptydashboard_clicked', { item: 'add_widget' });
-                  locationService.partial({ addWidget: true });
-                }}
-                disabled={!canCreate}
-              >
-                <Trans i18nKey="dashboard.empty.add-widget-button">Add widget</Trans>
-              </Button>
-            </div>
-          )}
-          <div className={cx(styles.containerBox, styles.centeredContent, styles.rowContainer)}>
-            <div className={styles.headerSmall}>
-              <Text element="h3" textAlignment="center" weight="medium">
-                <Trans i18nKey="dashboard.empty.add-row-header">Add a row</Trans>
-              </Text>
-            </div>
-            <div className={styles.bodySmall}>
-              <Text element="p" textAlignment="center" color="secondary">
-                <Trans i18nKey="dashboard.empty.add-row-body">
-                  Group your visualizations into expandable sections.
-                </Trans>
-              </Text>
-            </div>
+
+        <div className={styles.spacer}>
+          <div className={styles.heading}>
+            <Text element="h2" weight="light">
+              Add a custom visualization
+            </Text>
+          </div>
+          <Text element="p" color="secondary">
+            <Trans i18nKey="dashboard.empty.add-visualization-body">
+              Select a data source and then query and visualize your data with charts, stats and tables or create lists,
+              markdowns and other widgets.
+            </Trans>
+          </Text>
+          <div>
+            <Button
+              size="md"
+              icon="plus"
+              data-testid={selectors.pages.AddDashboard.itemButton('Create new panel button')}
+              onClick={() => {
+                const id = onCreateNewPanel(dashboard, initialDatasource);
+                reportInteraction('dashboards_emptydashboard_clicked', { item: 'add_visualization' });
+                locationService.partial({ editPanel: id, firstPanel: true });
+                dispatch(setInitialDatasource(undefined));
+              }}
+              disabled={!canCreate}
+              fill="outline"
+              className={styles.buttonWrapper}
+            >
+              <Trans i18nKey="dashboard.empty.add-visualization-button">Add visualization</Trans>
+            </Button>
+          </div>
+        </div>
+
+        <div className={styles.spacer}>
+          <div className={styles.heading}>
+            <Text element="h2" weight="light">
+              <Trans i18nKey="dashboard.empty.add-row-header">Add a row</Trans>
+            </Text>
+          </div>
+          <Text element="p" color="secondary">
+            <Trans i18nKey="dashboard.empty.add-row-body">Group your visualizations into expandable sections.</Trans>
+          </Text>
+          <div>
             <Button
               icon="plus"
               fill="outline"
@@ -105,23 +102,25 @@ const DashboardEmpty = ({ dashboard, canCreate }: Props) => {
                 onCreateNewRow(dashboard);
               }}
               disabled={!canCreate}
+              className={styles.buttonWrapper}
             >
               <Trans i18nKey="dashboard.empty.add-row-button">Add row</Trans>
             </Button>
           </div>
-          <div className={cx(styles.containerBox, styles.centeredContent, styles.libraryContainer)}>
-            <div className={styles.headerSmall}>
-              <Text element="h3" textAlignment="center" weight="medium">
-                <Trans i18nKey="dashboard.empty.add-import-header">Import panel</Trans>
-              </Text>
-            </div>
-            <div className={styles.bodySmall}>
-              <Text element="p" textAlignment="center" color="secondary">
-                <Trans i18nKey="dashboard.empty.add-import-body">
-                  Import visualizations that are shared with other dashboards.
-                </Trans>
-              </Text>
-            </div>
+        </div>
+
+        <div>
+          <div className={styles.heading}>
+            <Text element="h2" weight="light">
+              <Trans i18nKey="dashboard.empty.add-import-header">Import panel</Trans>
+            </Text>
+          </div>
+          <Text element="p" color="secondary">
+            <Trans i18nKey="dashboard.empty.add-import-body">
+              Import visualizations that are shared with other dashboards.
+            </Trans>
+          </Text>
+          <div>
             <Button
               icon="plus"
               fill="outline"
@@ -131,6 +130,7 @@ const DashboardEmpty = ({ dashboard, canCreate }: Props) => {
                 onAddLibraryPanel(dashboard);
               }}
               disabled={!canCreate}
+              className={styles.buttonWrapper}
             >
               <Trans i18nKey="dashboard.empty.add-import-button">Import library panel</Trans>
             </Button>
@@ -145,71 +145,30 @@ export default DashboardEmpty;
 
 function getStyles(theme: GrafanaTheme2) {
   return {
-    wrapper: css({
-      label: 'dashboard-empty-wrapper',
+    main: css({
+      display: 'flex',
+      justifyContent: 'left',
       flexDirection: 'column',
-      maxWidth: '890px',
-      gap: theme.spacing.gridSize * 4,
-      paddingTop: theme.spacing(2),
-
-      [theme.breakpoints.up('sm')]: {
-        paddingTop: theme.spacing(12),
-      },
+      width: '40%',
     }),
-    containerBox: css({
-      label: 'container-box',
-      flexDirection: 'column',
-      boxSizing: 'border-box',
-      border: '1px dashed rgba(110, 159, 255, 0.5)',
+    spacer: css({
+      marginBottom: '42px',
+    }),
+    heading: css({
+      marginBottom: '12px',
+    }),
+    section: css({
+      marginBottom: '0px 48px',
+    }),
+    buttonWrapper: css({
+      marginTop: '12px',
     }),
     centeredContent: css({
       label: 'centered',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-    }),
-    visualizationContainer: css({
-      label: 'visualization-container',
-      padding: theme.spacing.gridSize * 4,
-    }),
-    others: css({
-      width: '100%',
-      label: 'others-wrapper',
-      alignItems: 'stretch',
-      flexDirection: 'row',
-      gap: theme.spacing.gridSize * 4,
-
-      [theme.breakpoints.down('md')]: {
-        flexDirection: 'column',
-      },
-    }),
-    widgetContainer: css({
-      label: 'widget-container',
-      padding: theme.spacing.gridSize * 3,
-      flex: 1,
-    }),
-    rowContainer: css({
-      label: 'row-container',
-      padding: theme.spacing.gridSize * 3,
-      flex: 1,
-    }),
-    libraryContainer: css({
-      label: 'library-container',
-      padding: theme.spacing.gridSize * 3,
-      flex: 1,
-    }),
-    headerBig: css({
-      marginBottom: theme.spacing.gridSize * 2,
-    }),
-    headerSmall: css({
-      marginBottom: theme.spacing.gridSize,
-    }),
-    bodyBig: css({
-      maxWidth: '75%',
-      marginBottom: theme.spacing.gridSize * 4,
-    }),
-    bodySmall: css({
-      marginBottom: theme.spacing.gridSize * 3,
+      height: '100%',
     }),
   };
 }
