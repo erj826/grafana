@@ -7,7 +7,12 @@ import { locationService, reportInteraction } from '@grafana/runtime';
 import { Button, useStyles2, Text } from '@grafana/ui';
 import { Trans } from 'app/core/internationalization';
 import { DashboardModel } from 'app/features/dashboard/state';
-import { onAddLibraryPanel, onCreateNewPanel, onCreateNewRow } from 'app/features/dashboard/utils/dashboard';
+import {
+  onAddLibraryPanel,
+  onCreateNewPanel,
+  onCreateNewRow,
+  onStartWithPackage,
+} from 'app/features/dashboard/utils/dashboard';
 import { useDispatch, useSelector } from 'app/types';
 
 import { setInitialDatasource } from '../state/reducers';
@@ -25,7 +30,7 @@ const DashboardEmpty = ({ dashboard, canCreate }: Props) => {
   return (
     <div className={styles.centeredContent}>
       <div className={styles.main}>
-        <p className={styles.spacer}>Welcome to your new dashboard. Looks empty; let`&apos;`s fix that.</p>
+        <p className={styles.spacer}>Welcome to your new dashboard. Looks empty; let&apos;s fix that.</p>
 
         <div className={styles.spacer}>
           <div className={styles.heading}>
@@ -34,16 +39,14 @@ const DashboardEmpty = ({ dashboard, canCreate }: Props) => {
             </Text>
           </div>
           <Text element="p" color="secondary">
-            You can build almost anything in Grafana. But you don`&apos;`t have to.
+            You can build almost anything in Grafana. But you don&apos;t have to.
             <br />
             Packages contain configured and tested visualizations for most monitoring use cases.
           </Text>
           <Button
             size="md"
             icon="plus"
-            onClick={() => {
-              console.log('ADDING FROM PACKAGE');
-            }}
+            onClick={() => onStartWithPackage(dashboard)}
             disabled={!canCreate}
             className={styles.buttonWrapper}
           >

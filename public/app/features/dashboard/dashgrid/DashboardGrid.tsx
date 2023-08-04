@@ -16,6 +16,7 @@ import { GridPos } from '../state/PanelModel';
 
 import DashboardEmpty from './DashboardEmpty';
 import { DashboardPanel } from './DashboardPanel';
+import { PackageDrawer } from './PackageDrawer';
 
 export interface Props {
   dashboard: DashboardModel;
@@ -217,7 +218,10 @@ export class DashboardGrid extends PureComponent<Props> {
   render() {
     const { isEditable, dashboard } = this.props;
 
-    if (config.featureToggles.emptyDashboardPage && dashboard.panels.length === 0) {
+    // JUST FOR TESTING
+    dashboard.isPackageDrawerOpen = true;
+
+    if (config.featureToggles.emptyDashboardPage && dashboard.panels.length === 0 && !dashboard.isPackageDrawerOpen) {
       return <DashboardEmpty dashboard={dashboard} canCreate={isEditable} />;
     }
 
@@ -228,6 +232,7 @@ export class DashboardGrid extends PureComponent<Props> {
      */
     return (
       <div style={{ flex: '1 1 auto', display: this.props.editPanel ? 'none' : undefined }}>
+        {dashboard.isPackageDrawerOpen && <PackageDrawer onClose={() => dashboard.togglePackageDrawer()} />}
         <AutoSizer disableHeight>
           {({ width }) => {
             if (width === 0) {

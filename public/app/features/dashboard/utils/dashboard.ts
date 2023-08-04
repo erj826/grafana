@@ -52,6 +52,11 @@ export function onAddLibraryPanel(dashboard: DashboardModel) {
   dashboard.addPanel(newPanel);
 }
 
+export function onStartWithPackage(dashboard: DashboardModel) {
+  // @ts-ignore
+  dashboard.togglePackageDrawer();
+}
+
 type PanelPluginInfo = { defaults: { gridPos: { w: number; h: number }; title: string } };
 
 export function onPasteCopiedPanel(dashboard: DashboardModel, panelPluginInfo?: PanelPluginMeta & PanelPluginInfo) {

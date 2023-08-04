@@ -99,6 +99,9 @@ export class DashboardModel implements TimeModel {
   panelInEdit?: PanelModel;
   panelInView?: PanelModel;
   fiscalYearStartMonth?: number;
+
+  isPackageDrawerOpen: boolean;
+
   private panelsAffectedByVariableChange: number[] | null;
   private appEventsSubscription: Subscription;
   private lastRefresh: number;
@@ -177,6 +180,8 @@ export class DashboardModel implements TimeModel {
 
     this.initMeta(meta);
     this.updateSchema(data);
+
+    this.isPackageDrawerOpen = false;
 
     // Auto-migrate old angular panels
     if (options?.autoMigrateOldPanels || !config.angularSupportEnabled || config.featureToggles.autoMigrateOldPanels) {
@@ -534,6 +539,13 @@ export class DashboardModel implements TimeModel {
 
     this.sortPanelsByGridPos();
 
+    this.events.publish(new DashboardPanelsChangedEvent());
+  }
+
+  togglePackageDrawer() {
+    this.isPackageDrawerOpen = !this.isPackageDrawerOpen;
+
+    // Hacky
     this.events.publish(new DashboardPanelsChangedEvent());
   }
 

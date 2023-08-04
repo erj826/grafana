@@ -221,29 +221,27 @@ const getStyles = (theme: GrafanaTheme2) => {
       zIndex: theme.zIndex.dropdown,
     }),
     drawerMotion: css({
-      '&-appear': {
-        transform: 'translateX(100%)',
-        transition: 'none !important',
-
-        '&-active': {
-          transition: `${theme.transitions.create('transform')} !important`,
-          transform: 'translateX(0)',
-        },
-      },
+      // '&-appear': {
+      //   transform: 'translateX(100%)',
+      //   transition: 'none !important',
+      //   '&-active': {
+      //     transition: `${theme.transitions.create('transform')} !important`,
+      //     transform: 'translateX(0)',
+      //   },
+      // },
     }),
     mask: css({
-      backgroundColor: `${theme.components.overlay.background} !important`,
-      backdropFilter: 'blur(1px)',
+      // backgroundColor: `${theme.components.overlay.background} !important`,
+      // backdropFilter: 'blur(1px)',
     }),
     maskMotion: css({
-      '&-appear': {
-        opacity: 0,
-
-        '&-active': {
-          opacity: 1,
-          transition: theme.transitions.create('opacity'),
-        },
-      },
+      // '&-appear': {
+      //   opacity: 0,
+      //   '&-active': {
+      //     opacity: 1,
+      //     transition: theme.transitions.create('opacity'),
+      //   },
+      // },
     }),
     header: css({
       flexGrow: 0,
