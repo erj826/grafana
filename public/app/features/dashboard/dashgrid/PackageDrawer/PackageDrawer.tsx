@@ -25,14 +25,14 @@ interface PackageDrawerProps {
 
 export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   const styles = useStyles2(getStyles);
-  const [selectedPackage, setSelectedPackage] = useState<SelectableValue>();
+  const [selectedPackage, setSelectedPackage] = useState<SelectableValue>({ label: 'MySQL', value: mysqlPackage });
 
   const onAddPanel = (panel) => {
     onAddPackagePanel(dashboard, panel);
   };
 
-  const onRemovePanel = (panel) => {
-    onRemovePackagePanel(dashboard, panel);
+  const onRemovePanel = (panelId) => {
+    onRemovePackagePanel(dashboard, panelId);
   };
 
   return (

@@ -57,26 +57,19 @@ export function onStartWithPackage(dashboard: DashboardModel) {
   dashboard.togglePackageDrawer();
 }
 
-// @ts-ignore
-export function onAddPackagePanel(dashboard: DashboardModel, panel): number | undefined {
-  // const newPanel = { defaults: panel.spec, id: panel.spec.type };
-
-  // console.log(newPanel);
-
+export function onAddPackagePanel(dashboard: DashboardModel, panel: Partial<PanelModel>): number | undefined {
   const newPanel: Partial<PanelModel> = {
-    ...panel.spec,
+    ...panel,
     gridPos: calculateNewPanelGridPos(dashboard),
     isNew: true,
   };
 
   dashboard.addPanel(newPanel);
   return newPanel.id;
-  // @ts-ignore
-  // onPasteCopiedPanel(dashboard, newPanel);
 }
 
-export function onRemovePackagePanel(dashboard: DashboardModel, panel: PanelModel) {
-  dashboard.removePanel(panel);
+export function onRemovePackagePanel(dashboard: DashboardModel, panelId: number) {
+  dashboard.panels.filter((panel) => panel.id !== panelId);
 }
 
 type PanelPluginInfo = { defaults: { gridPos: { w: number; h: number }; title: string } };
