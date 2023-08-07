@@ -59,20 +59,20 @@ export function onStartWithPackage(dashboard: DashboardModel) {
 
 // @ts-ignore
 export function onAddPackagePanel(dashboard: DashboardModel, panel): number | undefined {
-  const newPanel = { defaults: panel.spec, id: panel.spec.type };
+  // const newPanel = { defaults: panel.spec, id: panel.spec.type };
 
-  console.log(newPanel);
+  // console.log(newPanel);
 
-  // const newPanel: Partial<PanelModel> = {
-  //   ...panelSpec,
-  //   gridPos: calculateNewPanelGridPos(dashboard),
-  //   isNew: true,
-  // };
+  const newPanel: Partial<PanelModel> = {
+    ...panel.spec,
+    gridPos: calculateNewPanelGridPos(dashboard),
+    isNew: true,
+  };
 
-  // dashboard.addPanel(newPanel);
-  // return newPanel.id;
+  dashboard.addPanel(newPanel);
+  return newPanel.id;
   // @ts-ignore
-  onPasteCopiedPanel(dashboard, newPanel);
+  // onPasteCopiedPanel(dashboard, newPanel);
 }
 
 export function onRemovePackagePanel(dashboard: DashboardModel, panel: PanelModel) {

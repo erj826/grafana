@@ -2,7 +2,7 @@ import { css } from '@emotion/css';
 import React from 'react';
 
 import type { GrafanaTheme2 } from '@grafana/data';
-import { Text, Button, useStyles2 } from '@grafana/ui';
+import { Text, useStyles2 } from '@grafana/ui';
 
 export const NoPackageSelected = () => {
   const styles = useStyles2(getStyles);
@@ -29,9 +29,6 @@ export const NoPackageSelected = () => {
             Create your own packages
           </a>
         </Text>
-      </div>
-      <div className={styles.finishedAdding}>
-        <Button>Finished Adding</Button>
       </div>
     </>
   );

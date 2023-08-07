@@ -12,6 +12,12 @@ import mysqlPackage from './MOCKMYSQL.json';
 import { NoPackageSelected } from './NoPackageSelected';
 import { PackagePanels } from './PackagePanels';
 
+const MOCK_OPTIONS = [
+  { label: 'MySQL', value: mysqlPackage },
+  { label: 'Postgres', value: null },
+  { label: 'MongoDB', value: null },
+];
+
 interface PackageDrawerProps {
   onClose: () => void;
   dashboard: DashboardModel;
@@ -19,9 +25,7 @@ interface PackageDrawerProps {
 
 export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   const styles = useStyles2(getStyles);
-  // @TODO: REMOVE
-  const [selectedPackage, setSelectedPackage] = useState<SelectableValue>(mysqlPackage);
-  // const [selectedPackage, setSelectedPackage] = useState<SelectableValue>();
+  const [selectedPackage, setSelectedPackage] = useState<SelectableValue>();
 
   const onAddPanel = (panel) => {
     onAddPackagePanel(dashboard, panel);
@@ -32,18 +36,18 @@ export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   };
 
   return (
-    <Drawer title="Packaged panels" size="sm" onClose={onClose} scrollableContent>
+    <Drawer title="Packaged panels" size="sm" onClose={onClose} scrollableContent mask={false}>
       <div className={styles.container}>
         <Field label="Package">
           <Select
             placeholder="Select a package..."
-            options={[{ label: 'MySQL' }, { label: 'Postgres' }, { label: 'MongoDB' }]}
+            options={MOCK_OPTIONS}
             value={selectedPackage}
             onChange={setSelectedPackage}
           />
         </Field>
         {selectedPackage ? (
-          <PackagePanels panelPackage={selectedPackage} onAddPanel={onAddPanel} onRemovePanel={onRemovePanel} />
+          <PackagePanels panelPackage={selectedPackage.value} onAddPanel={onAddPanel} onRemovePanel={onRemovePanel} />
         ) : (
           <NoPackageSelected />
         )}
