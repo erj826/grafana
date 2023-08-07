@@ -36,7 +36,7 @@ export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   };
 
   return (
-    <Drawer title="Packaged panels" size="sm" onClose={onClose} scrollableContent mask={false}>
+    <Drawer title="Packaged panels" size="sm" onClose={onClose} scrollableContent mask={false} motion={false}>
       <div className={styles.container}>
         <Field label="Package">
           <Select

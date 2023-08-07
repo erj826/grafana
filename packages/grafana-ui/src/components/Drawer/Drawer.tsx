@@ -48,12 +48,15 @@ export interface Props {
   onClose: () => void;
   /** Set to false to disable the mask */
   mask: boolean;
+  /** Set to false to disable the slide in animation */
+  motion: boolean;
 }
 
 export function Drawer({
   children,
   onClose,
   mask = true,
+  motion = true,
   closeOnMaskClick = true,
   scrollableContent = false,
   title,
@@ -94,14 +97,14 @@ export function Drawer({
       className={styles.drawerContent}
       rootClassName={rootClass}
       motion={{
-        motionAppear: true,
+        motionAppear: motion,
         motionName: styles.drawerMotion,
       }}
       mask={mask}
       maskClassName={styles.mask}
       maskClosable={closeOnMaskClick}
       maskMotion={{
-        motionAppear: true,
+        motionAppear: motion,
         motionName: styles.maskMotion,
       }}
     >
