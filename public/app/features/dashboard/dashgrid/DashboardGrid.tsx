@@ -218,7 +218,7 @@ export class DashboardGrid extends PureComponent<Props> {
   render() {
     const { isEditable, dashboard } = this.props;
 
-    // JUST FOR TESTING
+    // @TODO: REMOVE
     dashboard.isPackageDrawerOpen = true;
 
     if (config.featureToggles.emptyDashboardPage && dashboard.panels.length === 0 && !dashboard.isPackageDrawerOpen) {
