@@ -232,7 +232,9 @@ export class DashboardGrid extends PureComponent<Props> {
      */
     return (
       <div style={{ flex: '1 1 auto', display: this.props.editPanel ? 'none' : undefined }}>
-        {dashboard.isPackageDrawerOpen && <PackageDrawer onClose={() => dashboard.togglePackageDrawer()} />}
+        {dashboard.isPackageDrawerOpen && (
+          <PackageDrawer dashboard={dashboard} onClose={() => dashboard.togglePackageDrawer()} />
+        )}
         <AutoSizer disableHeight>
           {({ width }) => {
             if (width === 0) {

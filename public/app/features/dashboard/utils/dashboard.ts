@@ -57,6 +57,28 @@ export function onStartWithPackage(dashboard: DashboardModel) {
   dashboard.togglePackageDrawer();
 }
 
+// @ts-ignore
+export function onAddPackagePanel(dashboard: DashboardModel, panel): number | undefined {
+  const newPanel = { defaults: panel.spec, id: panel.spec.type };
+
+  console.log(newPanel);
+
+  // const newPanel: Partial<PanelModel> = {
+  //   ...panelSpec,
+  //   gridPos: calculateNewPanelGridPos(dashboard),
+  //   isNew: true,
+  // };
+
+  // dashboard.addPanel(newPanel);
+  // return newPanel.id;
+  // @ts-ignore
+  onPasteCopiedPanel(dashboard, newPanel);
+}
+
+export function onRemovePackagePanel(dashboard: DashboardModel, panel: PanelModel) {
+  dashboard.removePanel(panel);
+}
+
 type PanelPluginInfo = { defaults: { gridPos: { w: number; h: number }; title: string } };
 
 export function onPasteCopiedPanel(dashboard: DashboardModel, panelPluginInfo?: PanelPluginMeta & PanelPluginInfo) {

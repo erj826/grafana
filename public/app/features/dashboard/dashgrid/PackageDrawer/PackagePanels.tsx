@@ -5,7 +5,8 @@ import React, { useState, ChangeEvent } from 'react';
 import type { GrafanaTheme2 } from '@grafana/data';
 import { Input, Icon, useStyles2 } from '@grafana/ui';
 
-import { PanelGroup, prettifyTitle } from './PanelGroup';
+import { PanelGroup } from './PanelGroup';
+import { prettifyTitle } from './PanelItem';
 
 const PANEL = 'Panel';
 const OTHER = 'Other';
@@ -23,7 +24,7 @@ const groupPanels = (panelPackage) =>
     return acc;
   }, {});
 
-export const PackagePanels = ({ panelPackage }) => {
+export const PackagePanels = ({ panelPackage, onAddPanel, onRemovePanel }) => {
   const styles = useStyles2(getStyles);
   const [search, setSearch] = useState<string>('');
 
@@ -32,7 +33,7 @@ export const PackagePanels = ({ panelPackage }) => {
     .map(([group, panels]) => {
       const newPanels = panels.reduce((acc, panel) => {
         const name = prettifyTitle(panel.metadata.name).toLowerCase();
-        if (name.slice(0, search.length) === search.toLowerCase()) {
+        if (name.includes(search.toLowerCase())) {
           acc.push(panel);
         }
         return acc;
@@ -51,7 +52,7 @@ export const PackagePanels = ({ panelPackage }) => {
       />
       <div className={styles.groupSection}>
         {groupEntries.map((panelGroup, index) => (
-          <PanelGroup panelGroup={panelGroup} key={index} />
+          <PanelGroup panelGroup={panelGroup} key={index} onAddPanel={onAddPanel} onRemovePanel={onRemovePanel} />
         ))}
       </div>
     </div>

@@ -1,8 +1,12 @@
+// @ts-nocheck
 import { css } from '@emotion/css';
 import React, { useState } from 'react';
 
 import type { SelectableValue, GrafanaTheme2 } from '@grafana/data';
 import { Drawer, Select, Field, Button, useStyles2 } from '@grafana/ui';
+
+import { DashboardModel } from '../../state';
+import { onAddPackagePanel, onRemovePackagePanel } from '../../utils/dashboard';
 
 import mysqlPackage from './MOCKMYSQL.json';
 import { NoPackageSelected } from './NoPackageSelected';
@@ -10,13 +14,22 @@ import { PackagePanels } from './PackagePanels';
 
 interface PackageDrawerProps {
   onClose: () => void;
+  dashboard: DashboardModel;
 }
 
-export const PackageDrawer = ({ onClose }: PackageDrawerProps) => {
+export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   const styles = useStyles2(getStyles);
   // @TODO: REMOVE
   const [selectedPackage, setSelectedPackage] = useState<SelectableValue>(mysqlPackage);
   // const [selectedPackage, setSelectedPackage] = useState<SelectableValue>();
+
+  const onAddPanel = (panel) => {
+    onAddPackagePanel(dashboard, panel);
+  };
+
+  const onRemovePanel = (panel) => {
+    onRemovePackagePanel(dashboard, panel);
+  };
 
   return (
     <Drawer title="Packaged panels" size="sm" onClose={onClose} scrollableContent>
@@ -29,9 +42,13 @@ export const PackageDrawer = ({ onClose }: PackageDrawerProps) => {
             onChange={setSelectedPackage}
           />
         </Field>
-        {selectedPackage ? <PackagePanels panelPackage={selectedPackage} /> : <NoPackageSelected />}
+        {selectedPackage ? (
+          <PackagePanels panelPackage={selectedPackage} onAddPanel={onAddPanel} onRemovePanel={onRemovePanel} />
+        ) : (
+          <NoPackageSelected />
+        )}
         <div className={styles.finishedAdding}>
-          <Button>Finished Adding</Button>
+          <Button onClick={onClose}>Finished Adding</Button>
         </div>
       </div>
     </Drawer>
