@@ -68,7 +68,7 @@ function getStyles(theme: GrafanaTheme2) {
     panelTextSection: css({
       display: 'flex',
       flexDirection: 'column',
-      width: '352px',
+      overflow: 'hidden',
     }),
   };
 }

@@ -40,13 +40,7 @@ function getStyles(theme: GrafanaTheme2) {
       color: theme.colors.primary.text,
     }),
     text: css({
-      margin: '18px 0px',
-    }),
-    finishedAdding: css({
-      position: 'absolute',
-      bottom: 0,
-      right: 0,
-      padding: '20px',
+      margin: '12px 0px',
     }),
   };
 }

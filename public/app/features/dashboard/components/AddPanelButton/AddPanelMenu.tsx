@@ -11,6 +11,7 @@ import {
   onCreateNewPanel,
   onCreateNewRow,
   onPasteCopiedPanel,
+  onStartWithPackage,
 } from 'app/features/dashboard/utils/dashboard';
 import { useDispatch, useSelector } from 'app/types';
 
@@ -27,6 +28,7 @@ const AddPanelMenu = ({ dashboard }: Props) => {
 
   return (
     <Menu>
+      <Menu.Item key="add-panel-package" label="Add from package" onClick={() => onStartWithPackage(dashboard)} />
       <Menu.Item
         key="add-visualisation"
         testId={selectors.pages.AddDashboard.itemButton('Add new visualization menu item')}

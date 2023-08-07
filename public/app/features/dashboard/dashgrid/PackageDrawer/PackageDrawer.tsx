@@ -25,7 +25,7 @@ interface PackageDrawerProps {
 
 export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   const styles = useStyles2(getStyles);
-  const [selectedPackage, setSelectedPackage] = useState<SelectableValue>({ label: 'MySQL', value: mysqlPackage });
+  const [selectedPackage, setSelectedPackage] = useState<SelectableValue>();
 
   const onAddPanel = (panel) => {
     onAddPackagePanel(dashboard, panel);
