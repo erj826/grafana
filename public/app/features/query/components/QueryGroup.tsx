@@ -35,9 +35,6 @@ import { GroupActionComponents } from './QueryActionComponent';
 import { QueryEditorRows } from './QueryEditorRows';
 import { QueryGroupOptionsEditor } from './QueryGroupOptions';
 
-// import installedPackages from '../../../features/dashboard/dashgrid/PackageDrawer/__mocks__/packages_installed_data.json';
-// import availablePackages from '../../../features/dashboard/dashgrid/PackageDrawer/__mocks__/packages_available_registry.json';
-
 export interface Props {
   queryRunner: PanelQueryRunner;
   options: QueryGroupOptions;
@@ -198,17 +195,6 @@ export class QueryGroup extends PureComponent<Props, State> {
 
   onAddExpressionClick = () => {
     this.onQueriesChange(addQuery(this.state.queries, expressionDatasource.newQuery()));
-    this.onScrollBottom();
-  };
-
-  onAddFromPackageClick = async () => {
-    const { queries } = this.state;
-    const { options } = this.props;
-
-    const currentDS = await this.dataSourceSrv.get(options.dataSource);
-    console.log(currentDS);
-
-    this.onQueriesChange(addQuery(queries, this.newQuery()));
     this.onScrollBottom();
   };
 
@@ -461,7 +447,7 @@ const getStyles = stylesFactory(() => {
     `,
     expressionWrapper: css``,
     expressionButton: css`
-      margin-right: ${theme.spacing.xs};
+      margin-right: ${theme.spacing.sm};
     `,
   };
 });
