@@ -9,7 +9,7 @@ import { PanelItem } from './PanelItem';
 
 export const PanelGroup = ({ panelGroup, onAddPanel, onRemovePanel }) => {
   const styles = useStyles2(getStyles);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const [group, panels] = panelGroup;
   return (

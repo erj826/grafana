@@ -5,28 +5,17 @@ import React, { useState } from 'react';
 import type { GrafanaTheme2 } from '@grafana/data';
 import { IconButton, Text, useStyles2 } from '@grafana/ui';
 
-import mockPanel from './MOCKPANEL.json';
-
-export const prettifyTitle = (name: string) =>
-  name
-    .split('-')
-    .filter(Boolean)
-    .map((g) => g[0].toUpperCase() + g.slice(1))
-    .join(' ');
-
 export const PanelItem = ({ panel, onAddPanel, onRemovePanel }) => {
   const styles = useStyles2(getStyles);
   const [isAdded, setIsAdded] = useState(false);
 
   const handleAddPanel = async () => {
-    const panel = mockPanel[0].spec;
-    onAddPanel(panel);
+    onAddPanel(panel.spec);
     setIsAdded(true);
   };
 
   const handleRemovePanel = async () => {
-    const panelId = mockPanel[0].spec.id;
-    onRemovePanel(id);
+    onRemovePanel(panel.spec);
     setIsAdded(false);
   };
 
@@ -45,10 +34,10 @@ export const PanelItem = ({ panel, onAddPanel, onRemovePanel }) => {
       )}
       <div className={styles.panelTextSection}>
         <Text element="h6" color="maxContrast" weight="light">
-          {prettifyTitle(panel.metadata.name)}
+          {panel.title}
         </Text>
         <Text element="p" color="secondary" italic truncate>
-          {panel.spec.description || 'No description'}
+          {panel.description || 'No description'}
         </Text>
       </div>
     </div>

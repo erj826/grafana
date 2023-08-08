@@ -1,0 +1,898 @@
+[
+  {
+    "metadata": {
+      "id": "cert-manager",
+      "name": "Cert Manager",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["certificate", "encrypt", "hashicorp", "venafi", "dns"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/cert-manager.png",
+      "homepage": ""
+    },
+    "status": { "installed": true, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "mysql",
+      "name": "MySQL",
+      "description": "",
+      "version": "0.1.1",
+      "tags": ["database"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/mysql.png",
+      "homepage": ""
+    },
+    "status": { "installed": true, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "awx",
+      "name": "AWX",
+      "description": "",
+      "version": "0.0.2",
+      "tags": ["automation", "redhat", "ansible"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/awx.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "apache-airflow",
+      "name": "Apache Airflow",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["workflow", "orchestration", "task", "scheduling", "pipelines"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/apache_airflow.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "apache-cassandra",
+      "name": "Apache Cassandra",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["database", "nosql"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/cassandra.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "apache-couchdb",
+      "name": "Apache CouchDB",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["database", "nosql"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/apache_couchdb.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "apache-http",
+      "name": "Apache HTTP server",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["server", "web server", "http"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/apache.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "apache-hadoop",
+      "name": "Apache Hadoop",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["hadoop", "hdfs", "namenode", "datanode", "nodemanager", "resourcemanager", "yarn"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/hadoop-logo.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "apache-mesos",
+      "name": "Apache Mesos",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["distributed systems", "cluster computing", "scheduler", "resource management"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/apache-mesos-dark.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "spark",
+      "name": "Apache Spark",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["data science", "science", "machine learning"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/apache-spark.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "apache-tomcat",
+      "name": "Apache Tomcat",
+      "description": "",
+      "version": "0.0.2",
+      "tags": ["tomcat", "java", "servlet", "web", "clustering"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/apache-tomcat-logo.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "apollo-server",
+      "name": "Apollo Server",
+      "description": "",
+      "version": "0.0.4",
+      "tags": ["graphql", "node", "react", "javascript"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/apollo.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "azure-metrics",
+      "name": "Azure Metrics",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["ad", "aks", "azure", "cosmos", "microsoft", "windows"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/azure-metrics.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "caddy",
+      "name": "Caddy",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["server", "web server", "http", "go", "go lang"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/caddy.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "cilium-enterprise",
+      "name": "Cilium Enterprise",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["service mesh", "discovery", "load balancer", "cluster", "BGP", "hubble", "timescape"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/cilium-solo.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "clickhouse",
+      "name": "ClickHouse",
+      "description": "",
+      "version": "0.1.0",
+      "tags": ["database management", "ETL", "sql"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/clickhouse-logo.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "cloudwatch",
+      "name": "CloudWatch metrics",
+      "description": "",
+      "version": "0.0.11",
+      "tags": [
+        "amazon",
+        "aws",
+        "monitoring",
+        "metrics",
+        "acmprivateca",
+        "amazonmq",
+        "apigateway",
+        "appstream",
+        "appsync",
+        "applicationelb",
+        "athena",
+        "autoscaling",
+        "backup",
+        "billing",
+        "cassandra",
+        "certificatemanager",
+        "cloudfront",
+        "cloudwatch",
+        "cognito",
+        "ddosprotection",
+        "dms",
+        "dx",
+        "docdb",
+        "dynamodb",
+        "ec2spot",
+        "ecs",
+        "efs",
+        "elb",
+        "es",
+        "elasticache",
+        "elasticbeanstalk",
+        "elasticmapreduce",
+        "fsx",
+        "firehose",
+        "gamelift",
+        "globalaccelerator",
+        "iot",
+        "kafka",
+        "kinesis",
+        "kinesisanalytics",
+        "mediaconnect",
+        "mediatailor",
+        "natgateway",
+        "neptune",
+        "networkelb",
+        "networkfirewall",
+        "privatelinkendpoints",
+        "privatelinkservices",
+        "prometheus",
+        "redshift",
+        "route53",
+        "route53resolver",
+        "s3",
+        "ses",
+        "sns",
+        "sqs",
+        "states",
+        "storagegateway",
+        "transitgateway",
+        "vpn",
+        "wafv2",
+        "workspaces",
+        "containerinsights",
+        "ebs",
+        "ec2",
+        "lambda",
+        "rds"
+      ],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/aws.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "cockroachdb",
+      "name": "CockroachDB",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["sql", "database"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/cockroachdb.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "confluent-cloud",
+      "name": "Confluent Cloud",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["kafka", "apache", "ksqldb", "s3"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/confluent-cloud.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "coredns",
+      "name": "CoreDNS",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["dns"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/coredns.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "discourse",
+      "name": "Discourse",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["forum", "social", "community", "open-source"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/discourse.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "elasticsearch",
+      "name": "ElasticSearch",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["lucene", "elk", "logstash", "kibana"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/elasticsearch.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "gcp-metrics",
+      "name": "GCP Metrics",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["GCP", "google", "stackdriver"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/gcp-metrics.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "github",
+      "name": "GitHub",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["git", "repo", "version control"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/github.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "gitlab",
+      "name": "GitLab",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["vcs", "git"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/gitlab.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "gitea",
+      "name": "Gitea",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["git", "collaborative", "wiki"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/gitea.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "golang",
+      "name": "Go",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["google", "backend"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/golang.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "grafana-agent-check",
+      "name": "Grafana Agent Check",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["agent"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/grafana-agent.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "grafana-agent",
+      "name": "Grafana Agent health",
+      "description": "",
+      "version": "0.0.2",
+      "tags": ["agent"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/grafana-agent.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "hcp-vault",
+      "name": "HCP Vault",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["hashicorp", "secret", "credentials", "managed"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/vault.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "hass",
+      "name": "Home Assistant",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["temperatures", "humidty", "automation", "iot"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/hass.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "ibm-db2",
+      "name": "IBM DB2",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["ibm", "db2", "database"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/ibm-db2-dark.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "ibm-mq",
+      "name": "IBM MQ",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["queue", "messaging", "distributed", "message"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/ibm-mq.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "internal-linux-node",
+      "name": "Internal Linux Server",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["operating system", "server"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/linux.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "jenkins",
+      "name": "Jenkins",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["automation", "automate", "ci", "cd", "deploy", "continuous"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/jenkins.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "jira",
+      "name": "Jira",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["plan", "track", "project management"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/jira.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "kafka",
+      "name": "Kafka",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["zookeeper", "ksqldb", "schema", "connect"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/kafka.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "linux-node",
+      "name": "Linux Server",
+      "description": "",
+      "version": "1.1.1",
+      "tags": ["operating system", "server"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/linux.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "metrics-endpoint",
+      "name": "Metrics Endpoint",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["custom", "url", "scrape"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/metrics-endpoint.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "microsoft-iis",
+      "name": "Microsoft IIS",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["web server", "windows", "IIS", "Internet Information Services", "Windows server"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/windows.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "mssql",
+      "name": "Microsoft SQL Server",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["database", "sql", "rdbms"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/mssql-logo.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "description": "",
+      "version": "0.0.6",
+      "tags": ["database", "nosql"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/mongodb.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "nsq",
+      "name": "NSQ",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["realtime", "message"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/nsq.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "nodejs",
+      "name": "Node.js",
+      "description": "",
+      "version": "0.0.6",
+      "tags": ["javascript", "js", "backend"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/nodejs.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "nomad",
+      "name": "Nomad",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["workload", "orchestrator", "container"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/nomad.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "opensearch",
+      "name": "OpenSearch",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["elasticsearch", "index", "lucene", "distributed search"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/opensearch_dark.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "oracledb",
+      "name": "OracleDB",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["database", "sql", "rdbms"],
+      "icon": "https://grafana.com/api/plugins/oci-logs-datasource/logos/small",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "description": "",
+      "version": "1.0.0",
+      "tags": ["database", "sql"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/postgres.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "raspberry-pi-node",
+      "name": "Raspberry Pi",
+      "description": "",
+      "version": "0.0.2",
+      "tags": ["board", "embedded", "sensor"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/raspberrypi.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "redis",
+      "name": "Redis",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["memory", "database", "cache"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/redis.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "redis-enterprise",
+      "name": "Redis Enterprise",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["database", "enterprise", "memorystore"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/redis-enterprise-cube-rgb.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "ruby-rack",
+      "name": "Ruby Rack",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["web", "backend", "ruby"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/ruby-rack.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "sap-hana",
+      "name": "SAP HANA®",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["database", "sql", "rdbms", "in-memory", "analytic", "enterprise"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/sap-hana-logo.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "snmp",
+      "name": "SNMP",
+      "description": "",
+      "version": "0.0.2",
+      "tags": ["snmp", "network"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/snmp.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "snowflake",
+      "name": "Snowflake",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["data warehouse", "pipeline", "cybersecurity"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/snowflake-logo-light.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "spring-boot",
+      "name": "Spring Boot",
+      "description": "",
+      "version": "0.0.4",
+      "tags": ["java"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/spring-boot.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "squid",
+      "name": "Squid",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["squid", "proxy", "server"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/squid.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "tensorflow",
+      "name": "TensorFlow Serving",
+      "description": "",
+      "version": "0.0.2",
+      "tags": ["machine learning", "ml", "model"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/tensorflow.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "traefik",
+      "name": "Traefik",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["load", "balancer", "networking"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/traefik.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "ubiquiti-edgerouter",
+      "name": "Ubiquiti EdgeRouter",
+      "description": "",
+      "version": "0.0.2",
+      "tags": ["network", "router", "snmp"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/ubnt-er.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "varnish-cache",
+      "name": "Varnish Cache",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["varnish", "cache", "proxy", "web"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/varnish.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "vault",
+      "name": "Vault",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["secret", "secure", "hashicorp"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/vault.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "wso2-enterprise-integrator",
+      "name": "WSO2 Enterprise Integrator",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["esb", "microservice"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/wso2-ei.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "wildfly",
+      "name": "Wildfly",
+      "description": "",
+      "version": "0.0.1",
+      "tags": ["server", "web server", "http"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/wildfly.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "windows-exporter",
+      "name": "Windows",
+      "description": "",
+      "version": "0.0.7",
+      "tags": ["operating system"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/windows.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "dnsmasq",
+      "name": "dnsmasq",
+      "description": "",
+      "version": "0.0.3",
+      "tags": ["dns", "network", "dhcp", "router"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/dnsmasq.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "etcd",
+      "name": "etcd",
+      "description": "",
+      "version": "0.0.5",
+      "tags": ["key-value", "kubernetes"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/etcd.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "macos-node",
+      "name": "macOS",
+      "description": "",
+      "version": "0.0.8",
+      "tags": ["operating system"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/apple.svg",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  },
+  {
+    "metadata": {
+      "id": "rclone",
+      "name": "rclone",
+      "description": "",
+      "version": "0.0.2",
+      "tags": ["file", "transfer"],
+      "icon": "https://storage.googleapis.com/grafanalabs-integration-logos/rclone.png",
+      "homepage": ""
+    },
+    "status": { "installed": false, "unpacked": false }
+  }
+]

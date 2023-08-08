@@ -1,22 +1,22 @@
 // @ts-nocheck
 import { css } from '@emotion/css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import type { SelectableValue, GrafanaTheme2 } from '@grafana/data';
-import { Drawer, Select, Field, Button, useStyles2 } from '@grafana/ui';
+import type { SelectableValue } from '@grafana/data';
+import { Drawer, AsyncSelect, Field, Button, useStyles2 } from '@grafana/ui';
 
 import { DashboardModel } from '../../state';
 import { onAddPackagePanel, onRemovePackagePanel } from '../../utils/dashboard';
 
-import mysqlPackage from './MOCKMYSQL.json';
 import { NoPackageSelected } from './NoPackageSelected';
 import { PackagePanels } from './PackagePanels';
+import availablePackages from './__mocks__/packages_available_registry.json';
+import installedPackages from './__mocks__/packages_installed_data.json';
 
-const MOCK_OPTIONS = [
-  { label: 'MySQL', value: mysqlPackage },
-  { label: 'Postgres', value: null },
-  { label: 'MongoDB', value: null },
-];
+const loadOptions = async () => {
+  const pkgs = availablePackages;
+  return pkgs.map((pkg) => ({ label: pkg.metadata.name, value: pkg.metadata.id }));
+};
 
 interface PackageDrawerProps {
   onClose: () => void;
@@ -26,28 +26,38 @@ interface PackageDrawerProps {
 export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   const styles = useStyles2(getStyles);
   const [selectedPackage, setSelectedPackage] = useState<SelectableValue>();
+  const [packageData, setPackageData] = useState(null);
+
+  useEffect(() => {
+    if (selectedPackage) {
+      const id = selectedPackage.value;
+      const pkg = installedPackages.filter((pkg) => pkg.metadata.id === selectedPackage.value)[0];
+      setPackageData(pkg);
+    }
+  }, [selectedPackage]);
 
   const onAddPanel = (panel) => {
     onAddPackagePanel(dashboard, panel);
   };
 
-  const onRemovePanel = (panelId) => {
-    onRemovePackagePanel(dashboard, panelId);
+  const onRemovePanel = (panel) => {
+    onRemovePackagePanel(dashboard, panel);
   };
 
   return (
     <Drawer title="Packaged panels" size="sm" onClose={onClose} scrollableContent mask={false} motion={false}>
       <div className={styles.container}>
         <Field label="Package">
-          <Select
+          <AsyncSelect
             placeholder="Select a package..."
-            options={MOCK_OPTIONS}
+            loadOptions={loadOptions}
             value={selectedPackage}
             onChange={setSelectedPackage}
+            defaultOptions
           />
         </Field>
-        {selectedPackage ? (
-          <PackagePanels panelPackage={selectedPackage.value} onAddPanel={onAddPanel} onRemovePanel={onRemovePanel} />
+        {packageData ? (
+          <PackagePanels panelPackage={packageData} onAddPanel={onAddPanel} onRemovePanel={onRemovePanel} />
         ) : (
           <NoPackageSelected />
         )}
@@ -59,7 +69,7 @@ export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   );
 };
 
-function getStyles(theme: GrafanaTheme2) {
+function getStyles() {
   return {
     container: css({
       display: 'flex',
@@ -68,7 +78,7 @@ function getStyles(theme: GrafanaTheme2) {
       height: 'inherit',
     }),
     finishedAdding: css({
-      padding: '20px 0px',
+      padding: '20px',
       display: 'flex',
       justifyContent: 'right',
       marginTop: 'auto',

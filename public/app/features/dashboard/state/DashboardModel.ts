@@ -866,6 +866,11 @@ export class DashboardModel implements TimeModel {
     this.events.publish(new DashboardPanelsChangedEvent());
   }
 
+  removePanelById(panelId: number) {
+    this.panels = this.panels.filter((item) => item.id !== panelId);
+    this.events.publish(new DashboardPanelsChangedEvent());
+  }
+
   removeRow(row: PanelModel, removePanels: boolean) {
     const needToggle = (!removePanels && row.collapsed) || (removePanels && !row.collapsed);
 
