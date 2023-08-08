@@ -2,15 +2,14 @@
 import { css } from '@emotion/css';
 import React, { useState, ChangeEvent, useEffect } from 'react';
 
-import { SelectableValue } from '@grafana/data';
-import { AsyncSelect, Input, Icon, RadioButtonList, Pagination, useStyles2, Text, InputControl } from '@grafana/ui';
+import { AsyncSelect, Input, Icon, RadioButtonList, Pagination, useStyles2, Text } from '@grafana/ui';
 
 import { loadOptions, fetchPackage } from '../../../../../../features/dashboard/dashgrid/PackageDrawer/PackageDrawer';
 
 const PAGE_SIZE = 5;
 
 export const FromPackageBuilder = (props) => {
-  const { query, selectedPackage, setSelectedPackage, selectedPackageQuery, setSelectedPackageQuery } = props;
+  const { query, selectedPackage, setSelectedPackage, selectedPackageQuery, setSelectedPackageQuery, onChange } = props;
 
   const styles = useStyles2(getStyles);
   const [search, setSearch] = useState<string>('');
@@ -24,13 +23,21 @@ export const FromPackageBuilder = (props) => {
     }
   }, [selectedPackage]);
 
+  const onChangePackage = (q) => {
+    setSelectedPackageQuery(q);
+    query.expr = q.spec.expr;
+    onChange(query);
+  };
+
   const queries = packageData?.spec?.queries
-    ? packageData.spec.queries.filter((q) => q.title.includes(search.toLowerCase()))
+    ? packageData.spec.queries
+        .sort((a, _) => (a.title === selectedPackageQuery.title ? -1 : 0))
+        .filter((q) => q.title.includes(search.toLowerCase()))
     : [];
   const numberOfPages = Math.ceil(queries.length / PAGE_SIZE);
   const startIndex = (currentPage - 1) * PAGE_SIZE;
   const endIndex = Math.min(startIndex + PAGE_SIZE, queries.length);
-  const queryPage = queries.slice(startIndex, endIndex);
+  const queryPage = queries.slice(startIndex, endIndex) || [];
 
   return (
     <div className={styles.container}>
@@ -46,12 +53,15 @@ export const FromPackageBuilder = (props) => {
         <Input
           prefix={<Icon name="search" />}
           placeholder="Search queries..."
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setSearch(e.target.value);
+            setCurrentPage(1);
+          }}
           width={40}
         />
       </div>
       <div className={styles.wrapper}>
-        {packageData && packageData.spec.queries && (
+        {packageData && (
           <>
             <div className={styles.radioWrapper}>
               {queryPage.length ? (
@@ -67,13 +77,11 @@ export const FromPackageBuilder = (props) => {
                         </Text>
                       </div>
                     ),
-                    value: q.spec,
+                    value: q,
                   }))}
                   value={selectedPackageQuery}
-                  onChange={(val) => {
-                    setSelectedPackageQuery(val);
-                    query.expr = val.expr;
-                  }}
+                  onChange={onChangePackage}
+                  name="select-query"
                 />
               ) : (
                 <Text element="p" italic>
