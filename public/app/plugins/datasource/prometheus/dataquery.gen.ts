@@ -13,6 +13,7 @@ import * as common from '@grafana/schema';
 export enum QueryEditorMode {
   Builder = 'builder',
   Code = 'code',
+  Packaged = 'packaged',
 }
 
 export type PromQueryFormat = ('time_series' | 'table' | 'heatmap');

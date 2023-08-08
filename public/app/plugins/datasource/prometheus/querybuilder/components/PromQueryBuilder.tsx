@@ -42,7 +42,7 @@ export const PromQueryBuilder = React.memo<Props>((props) => {
       <EditorRow>
         <MetricsLabelsSection query={query} onChange={onChange} datasource={datasource} />
       </EditorRow>
-      {initHints.length ? (
+      {/* {initHints.length ? (
         <div className="query-row-break">
           <div className="prom-query-field-info text-warning">
             {initHints[0].label}{' '}
@@ -53,15 +53,15 @@ export const PromQueryBuilder = React.memo<Props>((props) => {
             ) : null}
           </div>
         </div>
-      ) : null}
-      {showExplain && (
+      ) : null} */}
+      {/* {showExplain && (
         <OperationExplainedBox
           stepNumber={1}
           title={<RawQuery query={`${query.metric} ${promQueryModeller.renderLabels(query.labels)}`} lang={lang} />}
         >
           {EXPLAIN_LABEL_FILTER_CONTENT}
         </OperationExplainedBox>
-      )}
+      )} */}
       <OperationsEditorRow>
         <OperationList<PromVisualQuery>
           queryModeller={promQueryModeller}
@@ -81,7 +81,7 @@ export const PromQueryBuilder = React.memo<Props>((props) => {
           buildVisualQueryFromString={buildVisualQueryFromString}
         />
       </OperationsEditorRow>
-      {showExplain && (
+      {/* {showExplain && (
         <OperationListExplained<PromVisualQuery>
           lang={lang}
           query={query}
@@ -90,8 +90,8 @@ export const PromQueryBuilder = React.memo<Props>((props) => {
           onMouseEnter={(op) => setHighlightedOp(op)}
           onMouseLeave={() => setHighlightedOp(undefined)}
         />
-      )}
-      {query.binaryQueries && query.binaryQueries.length > 0 && (
+      )} */}
+      {/* {query.binaryQueries && query.binaryQueries.length > 0 && (
         <NestedQueryList
           query={query}
           datasource={datasource}
@@ -99,7 +99,7 @@ export const PromQueryBuilder = React.memo<Props>((props) => {
           onRunQuery={onRunQuery}
           showExplain={showExplain}
         />
-      )}
+      )} */}
     </>
   );
 });

@@ -13,9 +13,13 @@ import { PackagePanels } from './PackagePanels';
 import availablePackages from './__mocks__/packages_available_registry.json';
 import installedPackages from './__mocks__/packages_installed_data.json';
 
-const loadOptions = async () => {
+export const loadOptions = async () => {
   const pkgs = availablePackages;
   return pkgs.map((pkg) => ({ label: pkg.metadata.name, value: pkg.metadata.id }));
+};
+
+export const fetchPackage = (id) => {
+  return installedPackages.filter((pkg) => pkg.metadata.id === id)[0];
 };
 
 interface PackageDrawerProps {
@@ -30,8 +34,7 @@ export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
 
   useEffect(() => {
     if (selectedPackage) {
-      const id = selectedPackage.value;
-      const pkg = installedPackages.filter((pkg) => pkg.metadata.id === selectedPackage.value)[0];
+      const pkg = fetchPackage(selectedPackage.value);
       setPackageData(pkg);
     }
   }, [selectedPackage]);

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { css } from '@emotion/css';
 import React from 'react';
 

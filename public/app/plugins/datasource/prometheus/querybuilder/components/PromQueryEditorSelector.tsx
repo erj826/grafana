@@ -18,6 +18,7 @@ import { promQueryEditorExplainKey, useFlag } from '../shared/hooks/useFlag';
 import { QueryEditorMode } from '../shared/types';
 import { changeEditorMode, getQueryWithDefaults } from '../state';
 
+import { FromPackageBuilder } from './FromPackage';
 import { PromQueryBuilderContainer } from './PromQueryBuilderContainer';
 import { PromQueryBuilderOptions } from './PromQueryBuilderOptions';
 import { PromQueryCodeEditor } from './PromQueryCodeEditor';
@@ -49,6 +50,9 @@ export const PromQueryEditorSelector = React.memo<Props>((props) => {
   const [parseModalOpen, setParseModalOpen] = useState(false);
   const [queryPatternsModalOpen, setQueryPatternsModalOpen] = useState(false);
   const [dataIsStale, setDataIsStale] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState();
+  const [selectedPackageQuery, setSelectedPackageQuery] = useState();
+
   const { flag: explain, setFlag: setExplain } = useFlag(promQueryEditorExplainKey);
 
   const query = getQueryWithDefaults(props.query, app, defaultEditor);
@@ -151,6 +155,16 @@ export const PromQueryEditorSelector = React.memo<Props>((props) => {
             onRunQuery={props.onRunQuery}
             data={data}
             showExplain={explain}
+          />
+        )}
+        {editorMode === QueryEditorMode.Packaged && (
+          <FromPackageBuilder
+            query={query}
+            onChange={onChangeInternal}
+            selectedPackage={selectedPackage}
+            setSelectedPackage={setSelectedPackage}
+            selectedPackageQuery={selectedPackageQuery}
+            setSelectedPackageQuery={setSelectedPackageQuery}
           />
         )}
         <PromQueryBuilderOptions query={query} app={props.app} onChange={onChange} onRunQuery={onRunQuery} />
