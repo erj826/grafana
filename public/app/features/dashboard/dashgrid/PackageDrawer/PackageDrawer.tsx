@@ -46,8 +46,8 @@ const loadOptions = async () => {
   return pkgs.map((pkg) => ({ label: pkg.metadata.name, value: pkg.metadata.id }));
 };
 
-export const fetchPackage = (id) => {
-  return installedPackages.filter((pkg) => pkg.metadata.id === id)[0];
+export const fetchPackage = (pkgs, id) => {
+  return pkgs.filter((pkg) => pkg.metadata.id === id)[0];
 };
 
 interface PackageDrawerProps {
@@ -66,7 +66,7 @@ export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
       return;
     }
 
-    const pkg = fetchPackage(selectedPackage.value);
+    const pkg = fetchPackage(pkgs, selectedPackage.value);
     setPackageData(pkg);
   }, [selectedPackage, pkgs]);
 
