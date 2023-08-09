@@ -41,7 +41,7 @@ import { PackagePanels } from './PackagePanels';
 
 const fetchPackages = async () => {
   const backendSrv = getBackendSrv();
-  const pkgs = await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`);
+  return await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`);
 };
 
 export const loadPackage = async (id) => {

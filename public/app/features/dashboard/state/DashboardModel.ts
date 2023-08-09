@@ -867,6 +867,9 @@ export class DashboardModel implements TimeModel {
   }
 
   removePanelById(panelId: number) {
+    console.log(panelId);
+    console.log(this.panels);
+
     this.panels = this.panels.filter((item) => item.id !== panelId);
     this.events.publish(new DashboardPanelsChangedEvent());
   }
