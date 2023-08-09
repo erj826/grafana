@@ -12,33 +12,6 @@ import { onAddPackagePanel, onRemovePackagePanel } from '../../utils/dashboard';
 import { NoPackageSelected } from './NoPackageSelected';
 import { PackagePanels } from './PackagePanels';
 
-// export const useInstalledPackages = () => {
-//   const [pkgs, setPkgs] = useState([]);
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [isError, setIsError] = useState(false);
-
-//   const backendSrv = getBackendSrv();
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       setIsError(false);
-//       setIsLoading(true);
-
-//       try {
-//         setPkgs(await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`));
-//       } catch (error) {
-//         setIsError(true);
-//       } finally {
-//         setIsLoading(false);
-//       }
-//     };
-
-//     fetchData();
-//   }, [backendSrv]);
-
-//   return { pkgs, isLoading, isError };
-// };
-
 const fetchPackages = async () => {
   const backendSrv = getBackendSrv();
   return await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`);
