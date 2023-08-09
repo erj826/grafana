@@ -8,14 +8,16 @@ import { IconButton, Text, useStyles2 } from '@grafana/ui';
 export const PanelItem = ({ panel, onAddPanel, onRemovePanel }) => {
   const styles = useStyles2(getStyles);
   const [isAdded, setIsAdded] = useState(false);
+  const [panelId, setPanelId] = useState();
 
   const handleAddPanel = async () => {
-    onAddPanel(panel.spec);
+    const id = onAddPanel(panel.spec);
+    setPanelId(id);
     setIsAdded(true);
   };
 
   const handleRemovePanel = async () => {
-    onRemovePanel(panel.spec);
+    onRemovePanel(panelId);
     setIsAdded(false);
   };
 

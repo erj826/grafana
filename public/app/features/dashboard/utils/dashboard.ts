@@ -68,9 +68,8 @@ export function onAddPackagePanel(dashboard: DashboardModel, panel: Partial<Pane
   return newPanel.id;
 }
 
-export function onRemovePackagePanel(dashboard: DashboardModel, panel: Partial<PanelModel>) {
-  // @ts-ignore
-  dashboard.removePanelById(panel.id);
+export function onRemovePackagePanel(dashboard: DashboardModel, panelId: number) {
+  dashboard.removePanelById(panelId);
 }
 
 type PanelPluginInfo = { defaults: { gridPos: { w: number; h: number }; title: string } };

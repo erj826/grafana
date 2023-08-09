@@ -52,11 +52,12 @@ export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   }, [selectedPackage]);
 
   const onAddPanel = (panel) => {
-    onAddPackagePanel(dashboard, panel);
+    const id = onAddPackagePanel(dashboard, panel);
+    return id;
   };
 
-  const onRemovePanel = (panel) => {
-    onRemovePackagePanel(dashboard, panel);
+  const onRemovePanel = (panelId) => {
+    onRemovePackagePanel(dashboard, panelId);
   };
 
   return (
