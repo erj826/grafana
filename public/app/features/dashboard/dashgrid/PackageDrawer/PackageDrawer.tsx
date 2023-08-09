@@ -4,22 +4,50 @@ import React, { useState, useEffect } from 'react';
 
 import type { SelectableValue } from '@grafana/data';
 import { Drawer, AsyncSelect, Field, Button, useStyles2 } from '@grafana/ui';
+import { getBackendSrv } from 'app/core/services/backend_srv';
 
 import { DashboardModel } from '../../state';
 import { onAddPackagePanel, onRemovePackagePanel } from '../../utils/dashboard';
 
 import { NoPackageSelected } from './NoPackageSelected';
 import { PackagePanels } from './PackagePanels';
-import availablePackages from './__mocks__/packages_available_registry.json';
-import installedPackages from './__mocks__/packages_installed_data.json';
+
+export const useInstalledPackages = () => {
+  const [pkgs, setPkgs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const backendSrv = getBackendSrv();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsError(false);
+      setIsLoading(true);
+
+      try {
+        setPkgs(await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`));
+      } catch (error) {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [backendSrv]);
+
+  return { pkgs, isLoading, isError };
+};
 
 export const loadOptions = async () => {
-  const pkgs = availablePackages;
+  const backendSrv = getBackendSrv();
+  const pkgs = await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`);
+
   return pkgs.map((pkg) => ({ label: pkg.metadata.name, value: pkg.metadata.id }));
 };
 
-export const fetchPackage = (id) => {
-  return installedPackages.filter((pkg) => pkg.metadata.id === id)[0];
+export const fetchPackage = (pkgs, id) => {
+  return pkgs.filter((pkg) => pkg.metadata.id === id)[0];
 };
 
 interface PackageDrawerProps {
@@ -30,14 +58,17 @@ interface PackageDrawerProps {
 export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   const styles = useStyles2(getStyles);
   const [selectedPackage, setSelectedPackage] = useState<SelectableValue>();
+  const { pkgs } = useInstalledPackages();
   const [packageData, setPackageData] = useState(null);
 
   useEffect(() => {
-    if (selectedPackage) {
-      const pkg = fetchPackage(selectedPackage.value);
-      setPackageData(pkg);
+    if (!selectedPackage) {
+      return;
     }
-  }, [selectedPackage]);
+
+    const pkg = fetchPackage(pkgs, selectedPackage.value);
+    setPackageData(pkg);
+  }, [selectedPackage, pkgs]);
 
   const onAddPanel = (panel) => {
     onAddPackagePanel(dashboard, panel);

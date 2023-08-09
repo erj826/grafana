@@ -4,7 +4,11 @@ import React, { useState, ChangeEvent, useEffect } from 'react';
 
 import { AsyncSelect, Input, Icon, RadioButtonList, Pagination, useStyles2, Text } from '@grafana/ui';
 
-import { loadOptions, fetchPackage } from '../../../../../../features/dashboard/dashgrid/PackageDrawer/PackageDrawer';
+import {
+  loadOptions,
+  fetchPackage,
+  useInstalledPackages,
+} from '../../../../../../features/dashboard/dashgrid/PackageDrawer/PackageDrawer';
 import { PromQueryBuilderExplained } from '../PromQueryBuilderExplained';
 
 const PAGE_SIZE = 5;
@@ -20,6 +24,7 @@ export const FromPackageBuilder = (props) => {
     showExplain,
   } = props;
 
+  const { pkgs } = useInstalledPackages();
   const styles = useStyles2(getStyles);
   const [search, setSearch] = useState<string>('');
   const [packageData, setPackageData] = useState();
@@ -27,12 +32,14 @@ export const FromPackageBuilder = (props) => {
 
   useEffect(() => {
     if (selectedPackage) {
-      const pkg = fetchPackage(selectedPackage.value);
-      pkg.spec.queries.sort((a, _) => (a.title === selectedPackageQuery.title ? -1 : 0));
-      setPackageData(pkg);
+      const pkg = fetchPackage(pkgs, selectedPackage.value);
+      if (pkg) {
+        pkg.spec.queries.sort((a, _) => (a.title === selectedPackageQuery.title ? -1 : 0));
+        setPackageData(pkg);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedPackage]);
+  }, [selectedPackage, pkgs]);
 
   const onChangePackage = (q) => {
     setSelectedPackageQuery(q);
