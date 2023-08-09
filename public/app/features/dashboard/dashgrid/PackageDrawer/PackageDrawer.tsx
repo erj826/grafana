@@ -12,7 +12,7 @@ import { onAddPackagePanel, onRemovePackagePanel } from '../../utils/dashboard';
 import { NoPackageSelected } from './NoPackageSelected';
 import { PackagePanels } from './PackagePanels';
 
-const useInstalledPackages = () => {
+export const useInstalledPackages = () => {
   const [pkgs, setPkgs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -39,7 +39,7 @@ const useInstalledPackages = () => {
   return { pkgs, isLoading, isError };
 };
 
-const loadOptions = async () => {
+export const loadOptions = async () => {
   const backendSrv = getBackendSrv();
   const pkgs = await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`);
 
