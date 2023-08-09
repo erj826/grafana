@@ -30,9 +30,17 @@ export const PanelItem = ({ panel, onAddPanel, onRemovePanel }) => {
           variant="destructive"
           className={styles.button}
           onClick={handleRemovePanel}
+          tooltip="Remove panel"
         />
       ) : (
-        <IconButton name="plus-circle" size="xl" variant="primary" className={styles.button} onClick={handleAddPanel} />
+        <IconButton
+          name="plus-circle"
+          size="xl"
+          variant="primary"
+          className={styles.button}
+          onClick={handleAddPanel}
+          tooltip="Add panel"
+        />
       )}
       <div className={styles.panelTextSection}>
         <Text element="h6" color="maxContrast" weight="light">
@@ -46,10 +54,14 @@ export const PanelItem = ({ panel, onAddPanel, onRemovePanel }) => {
   );
 };
 
-function getStyles(theme: GrafanaTheme2) {
+function getStyles() {
   return {
     button: css({
       margin: '0px 12px',
+      '&:before': {
+        width: `42px !important`,
+        height: `42px !important`,
+      },
     }),
     panelSection: css({
       display: 'flex',
