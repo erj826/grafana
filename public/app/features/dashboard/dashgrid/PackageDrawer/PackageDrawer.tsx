@@ -12,42 +12,46 @@ import { onAddPackagePanel, onRemovePackagePanel } from '../../utils/dashboard';
 import { NoPackageSelected } from './NoPackageSelected';
 import { PackagePanels } from './PackagePanels';
 
-export const useInstalledPackages = () => {
-  const [pkgs, setPkgs] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+// export const useInstalledPackages = () => {
+//   const [pkgs, setPkgs] = useState([]);
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [isError, setIsError] = useState(false);
 
+//   const backendSrv = getBackendSrv();
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       setIsError(false);
+//       setIsLoading(true);
+
+//       try {
+//         setPkgs(await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`));
+//       } catch (error) {
+//         setIsError(true);
+//       } finally {
+//         setIsLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, [backendSrv]);
+
+//   return { pkgs, isLoading, isError };
+// };
+
+const fetchPackages = async () => {
   const backendSrv = getBackendSrv();
+  const pkgs = await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`);
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
-
-      try {
-        setPkgs(await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`));
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [backendSrv]);
-
-  return { pkgs, isLoading, isError };
+export const loadPackage = async (id) => {
+  const pkgs = await fetchPackages();
+  return pkgs ? pkgs.filter((pkg) => pkg.metadata.id === id)[0] : {};
 };
 
 export const loadOptions = async () => {
-  const backendSrv = getBackendSrv();
-  const pkgs = await backendSrv.get(`api/plugins/grafana-observabilitypackages-app/resources/packages/installed`);
-
+  const pkgs = await fetchPackages();
   return pkgs.map((pkg) => ({ label: pkg.metadata.name, value: pkg.metadata.id }));
-};
-
-export const fetchPackage = (pkgs, id) => {
-  return pkgs.filter((pkg) => pkg.metadata.id === id)[0];
 };
 
 interface PackageDrawerProps {
@@ -58,17 +62,21 @@ interface PackageDrawerProps {
 export const PackageDrawer = ({ onClose, dashboard }: PackageDrawerProps) => {
   const styles = useStyles2(getStyles);
   const [selectedPackage, setSelectedPackage] = useState<SelectableValue>();
-  const { pkgs } = useInstalledPackages();
   const [packageData, setPackageData] = useState(null);
 
   useEffect(() => {
-    if (!selectedPackage) {
-      return;
+    if (selectedPackage) {
+      const getPackage = async (id) => {
+        try {
+          const pkg = await loadPackage(id);
+          setPackageData(pkg);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      getPackage(selectedPackage.value);
     }
-
-    const pkg = fetchPackage(pkgs, selectedPackage.value);
-    setPackageData(pkg);
-  }, [selectedPackage, pkgs]);
+  }, [selectedPackage]);
 
   const onAddPanel = (panel) => {
     onAddPackagePanel(dashboard, panel);

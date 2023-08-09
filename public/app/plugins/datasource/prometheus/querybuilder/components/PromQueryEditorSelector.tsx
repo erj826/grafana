@@ -51,7 +51,7 @@ export const PromQueryEditorSelector = React.memo<Props>((props) => {
   const [queryPatternsModalOpen, setQueryPatternsModalOpen] = useState(false);
   const [dataIsStale, setDataIsStale] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState();
-  const [selectedPackageQuery, setSelectedPackageQuery] = useState({});
+  const [selectedQuery, setSelectedQuery] = useState({});
 
   const { flag: explain, setFlag: setExplain } = useFlag(promQueryEditorExplainKey);
 
@@ -164,8 +164,8 @@ export const PromQueryEditorSelector = React.memo<Props>((props) => {
             showExplain={explain}
             selectedPackage={selectedPackage}
             setSelectedPackage={setSelectedPackage}
-            selectedPackageQuery={selectedPackageQuery}
-            setSelectedPackageQuery={setSelectedPackageQuery}
+            selectedQuery={selectedQuery}
+            setSelectedQuery={setSelectedQuery}
           />
         )}
         <PromQueryBuilderOptions query={query} app={props.app} onChange={onChange} onRunQuery={onRunQuery} />

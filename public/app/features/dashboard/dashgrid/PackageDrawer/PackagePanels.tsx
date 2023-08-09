@@ -43,7 +43,7 @@ export const PackagePanels = ({ panelPackage, onAddPanel, onRemovePanel }) => {
   //   .filter(Boolean)
   //   .sort((a, b) => (a[0] <= b[0] ? -1 : 1));
 
-  const panels = panelPackage.spec.panels;
+  const panels = panelPackage.spec.panels || [];
 
   const filteredPanels = panels.filter((panel) => panel.title.toLowerCase().includes(search.toLowerCase()));
 
