@@ -5,11 +5,20 @@ import React, { useState, ChangeEvent, useEffect } from 'react';
 import { AsyncSelect, Input, Icon, RadioButtonList, Pagination, useStyles2, Text } from '@grafana/ui';
 
 import { loadOptions, fetchPackage } from '../../../../../../features/dashboard/dashgrid/PackageDrawer/PackageDrawer';
+import { PromQueryBuilderExplained } from '../PromQueryBuilderExplained';
 
 const PAGE_SIZE = 5;
 
 export const FromPackageBuilder = (props) => {
-  const { query, selectedPackage, setSelectedPackage, selectedPackageQuery, setSelectedPackageQuery, onChange } = props;
+  const {
+    query,
+    selectedPackage,
+    setSelectedPackage,
+    selectedPackageQuery,
+    setSelectedPackageQuery,
+    onChange,
+    showExplain,
+  } = props;
 
   const styles = useStyles2(getStyles);
   const [search, setSearch] = useState<string>('');
@@ -19,8 +28,10 @@ export const FromPackageBuilder = (props) => {
   useEffect(() => {
     if (selectedPackage) {
       const pkg = fetchPackage(selectedPackage.value);
+      pkg.spec.queries.sort((a, _) => (a.title === selectedPackageQuery.title ? -1 : 0));
       setPackageData(pkg);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPackage]);
 
   const onChangePackage = (q) => {
@@ -30,9 +41,7 @@ export const FromPackageBuilder = (props) => {
   };
 
   const queries = packageData?.spec?.queries
-    ? packageData.spec.queries
-        .sort((a, _) => (a.title === selectedPackageQuery.title ? -1 : 0))
-        .filter((q) => q.title.includes(search.toLowerCase()))
+    ? packageData.spec.queries.filter((q) => q.title.includes(search.toLowerCase()))
     : [];
   const numberOfPages = Math.ceil(queries.length / PAGE_SIZE);
   const startIndex = (currentPage - 1) * PAGE_SIZE;
@@ -99,6 +108,7 @@ export const FromPackageBuilder = (props) => {
           </>
         )}
       </div>
+      {showExplain && <PromQueryBuilderExplained query={query.expr} />}
     </div>
   );
 };

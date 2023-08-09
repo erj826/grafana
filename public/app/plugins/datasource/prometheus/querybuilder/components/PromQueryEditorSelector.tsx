@@ -161,6 +161,7 @@ export const PromQueryEditorSelector = React.memo<Props>((props) => {
           <FromPackageBuilder
             query={query}
             onChange={onChangeInternal}
+            showExplain={explain}
             selectedPackage={selectedPackage}
             setSelectedPackage={setSelectedPackage}
             selectedPackageQuery={selectedPackageQuery}
